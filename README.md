@@ -12,12 +12,6 @@ Update all submodules:
 $ git submodule update --remote
 ```
 
-# Tools: Storage
-
-Implementations of some storage types in C.
-
-# Usage
-
 Add
 ```json
 "C_Cpp.default.includePath": [
@@ -25,6 +19,17 @@ Add
 ]
 ```
 to your local VSCode `settings.json` file
+
+Do not forget to add include flag to your compiler command:
+```
+-I"third-party/tools-storage/include"
+```
+
+# Tools: Storage
+
+Implementations of some storage types in C.
+
+# Usage
 
 To use Storage library add
 ```c
