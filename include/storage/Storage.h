@@ -1,6 +1,6 @@
 // License: CC BY-NC-SA 4.0
 /*
- * Storage.c
+ * Storage.h
  *
  * Master include file. Processes some defines for Array and includes necessary libraries.
  *

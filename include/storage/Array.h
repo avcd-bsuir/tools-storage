@@ -1,6 +1,6 @@
 // License: CC BY-NC-SA 4.0
 /*
- * Array.c
+ * Array.h
  *
  * C++'s vector-like array implementation.
  *
