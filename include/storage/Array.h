@@ -1,3 +1,13 @@
+// License: CC BY-NC-SA 4.0
+/*
+ * Array.c
+ *
+ * C++'s vector-like array implementation.
+ *
+ * Written by AlexeyFilich
+ * 15 oct 2020
+ */
+
 #ifndef ARRAY_H
 #define ARRAY_H
 

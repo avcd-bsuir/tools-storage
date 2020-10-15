@@ -1,3 +1,13 @@
+// License: CC BY-NC-SA 4.0
+/*
+ * Storage.c
+ *
+ * Master include file. Processes some defines for Array and includes necessary libraries.
+ *
+ * Written by AlexeyFilich
+ * 15 oct 2020
+ */
+
 #ifndef STORAGE_H
 #define STORAGE_H
 
