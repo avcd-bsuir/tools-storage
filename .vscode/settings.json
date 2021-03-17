@@ -1,0 +1,24 @@
+{
+    "C_Cpp.default.includePath": [
+        "${workspaceFolder}/third-party/tools-storage/include",
+        "${workspaceFolder}/third-party/tools-stuff/include",
+        "third-party/tools-storage/include",
+        "third-party/tools-stuff/include"
+    ],
+    "files.associations": {
+        "*.rma": "jade",
+        "stdio.h": "c",
+        "interactions.h": "c",
+        "storage.h": "c",
+        "array.h": "c",
+        "stdarg.h": "c",
+        "*.tcc": "c",
+        "optional": "c",
+        "type_traits": "c",
+        "ostream": "cpp",
+        "array": "c",
+        "string": "c",
+        "string_view": "c",
+        "ranges": "c"
+    }
+}

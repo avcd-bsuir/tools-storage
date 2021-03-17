@@ -5,7 +5,7 @@
  * Master include file. Processes some defines for Array and includes necessary libraries.
  *
  * Written by AlexeyFilich
- * 15 oct 2020
+ * 17 mar 2021
  */
 
 #ifndef STORAGE_H
@@ -17,7 +17,7 @@
 #include <string.h>
 
 #ifdef STORAGE_OPTIMAL
-    #define STORAGE_ARRAY_SPECIAL_CASES
+    #define STORAGE_SPECIAL_CASES
     #define STORAGE_ARRAY_USE_INDEXES
     #define STORAGE_EXIT_ON_FAILURE
 #endif
@@ -31,5 +31,6 @@
 #endif
 
 #include "Array.h"
+#include "Stack.h"
 
 #endif

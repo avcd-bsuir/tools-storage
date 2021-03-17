@@ -79,7 +79,7 @@ int aArrayInsert(Array * array, size_t index, void * element) {
     return aArraySet(array, index, element); // Set element to an index
 }
 
-#ifdef STORAGE_ARRAY_SPECIAL_CASES
+#ifdef STORAGE_SPECIAL_CASES
     int aArraySetI(Array * array, size_t index, int element) {
         return aArraySet(array, index, &element);
     }
