@@ -15,38 +15,42 @@
 
 struct Stack {
     void * data;
-    struct Stack *parent;
+    size_t element_size;
+    struct Stack * parent;
 };
 typedef struct Stack Stack;
 
-void aStackInit(Stack **stack) {
+void aStackInit(Stack ** stack) {
     *stack = NULL;
 }
 
-void aStackPush(Stack **stack, void * data) {
-    Stack *next = (Stack *)malloc(sizeof(Stack));
-    next->data = data;
+#define aStackPush(stack, data) \
+    aStackPushType(stack, data, sizeof(*(data)))
+
+void aStackPushType(Stack ** stack, void * data, size_t element_size) {
+    // printf("Pushed %d [0x%d] size %d\n", *(int *)data, data, element_size);
+    Stack * next = (Stack *)malloc(sizeof(Stack));
+    next->data = malloc(element_size);
+    memcpy(next->data, data, element_size);
+    // printf("Newdat %d [0x%d] size %d\n", *(int *)next->data, next->data, element_size);
     next->parent = *stack;
     *stack = next;
 }
 
-void * aStackPop(Stack **stack) {
-    Stack *prev = *stack;
-    void * data = (*stack)->data;
+void aStackPop(Stack ** stack) {
+    Stack * prev = *stack;
     if (*stack == NULL) {
         printf("error: stack is empty\n");
         exit(-1);
     }
     *stack = (*stack)->parent;
     free(prev);
-    prev = NULL;
-    return data;
 }
 
-#define aStackPopAs(stack, type) \
-    *(type *)aStackPop(stack)
+#define aStackTopAs(stack, type) \
+    *(type *)aStackTop(stack)
 
-void * aStackTop(Stack **stack) {
+void * aStackTop(Stack ** stack) {
     if (*stack == NULL) {
         printf("error: stack is empty\n");
         exit(-1);
@@ -54,43 +58,28 @@ void * aStackTop(Stack **stack) {
     return (*stack)->data;
 }
 
-#define aStackTopAs(stack, type) \
-    *(type *)aStackTop(stack)
-
-#ifdef STORAGE_ARRAY_SPECIAL_CASES
-    void aStackPushI(Stack **stack, int data) {
+#ifdef STORAGE_SPECIAL_CASES
+    void aStackPushI(Stack ** stack, int data) {
         aStackPush(stack, &data);
     }
 
-    void aStackPushF(Stack **stack, float data) {
+    void aStackPushF(Stack ** stack, float data) {
         aStackPush(stack, &data);
     }
 
-    void aStackPushC(Stack **stack, char data) {
+    void aStackPushC(Stack ** stack, char data) {
         aStackPush(stack, &data);
     }
 
-    int aStackPopI(Stack **stack) {
-        aStackPop(stack);
-    }
-
-    float aStackPopF(Stack **stack) {
-        aStackPop(stack);
-    }
-
-    char aStackPopC(Stack **stack) {
-        aStackPop(stack);
-    }
-
-    int aStackTopI(Stack **stack) {
+    int aStackTopI(Stack ** stack) {
         aStackTop(stack);
     }
 
-    float aStackTopF(Stack **stack) {
+    float aStackTopF(Stack ** stack) {
         aStackTop(stack);
     }
 
-    char aStackTopC(Stack **stack) {
+    char aStackTopC(Stack ** stack) {
         aStackTop(stack);
     }
 #endif
