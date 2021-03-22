@@ -28,11 +28,9 @@ void aStackInit(Stack ** stack) {
     aStackPushType(stack, data, sizeof(*(data)))
 
 void aStackPushType(Stack ** stack, void * data, size_t element_size) {
-    // printf("Pushed %d [0x%d] size %d\n", *(int *)data, data, element_size);
     Stack * next = (Stack *)malloc(sizeof(Stack));
     next->data = malloc(element_size);
     memcpy(next->data, data, element_size);
-    // printf("Newdat %d [0x%d] size %d\n", *(int *)next->data, next->data, element_size);
     next->parent = *stack;
     *stack = next;
 }
