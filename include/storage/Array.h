@@ -5,7 +5,7 @@
  * C++'s vector-like array implementation.
  *
  * Written by AlexeyFilich
- * 15 oct 2020
+ * 22 mar 2021
  */
 
 #ifndef ARRAY_H
@@ -22,7 +22,7 @@
 #endif
 
 #define MEMADDR(index) \
-    array->data + (index * array->element_size)
+    (char *)array->data + (index * array->element_size)
 
 #define GROW_IF_NEEDED(array) \
     if (!array->avaliable) { \

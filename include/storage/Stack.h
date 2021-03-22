@@ -5,13 +5,11 @@
  * Stack, based on linked list.
  *
  * Written by AlexeyFilich
- * 17 mar 2021
+ * 22 mar 2021
  */
 
 #ifndef STACK_H
 #define STACK_H
-
-#define STORAGE_SPECIAL_CASES
 
 struct Stack {
     void * data;
@@ -70,15 +68,15 @@ void * aStackTop(Stack ** stack) {
     }
 
     int aStackTopI(Stack ** stack) {
-        aStackTop(stack);
+        return *(int *)aStackTop(stack);
     }
 
     float aStackTopF(Stack ** stack) {
-        aStackTop(stack);
+        return *(float *)aStackTop(stack);
     }
 
     char aStackTopC(Stack ** stack) {
-        aStackTop(stack);
+        return *(char *)aStackTop(stack);
     }
 #endif
 
