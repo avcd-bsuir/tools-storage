@@ -5,7 +5,7 @@
  * C++'s vector-like array implementation.
  *
  * Written by AlexeyFilich
- * 22 mar 2021
+ * 23 mar 2021
  */
 
 #ifndef ARRAY_H

@@ -5,7 +5,7 @@
  * Master include file. Processes some defines for Array and includes necessary libraries.
  *
  * Written by AlexeyFilich
- * 17 mar 2021
+ * 23 mar 2021
  */
 
 #ifndef STORAGE_H
@@ -31,6 +31,7 @@
 #endif
 
 #include "Array.h"
+#include "Queue.h"
 #include "Stack.h"
 
 #endif

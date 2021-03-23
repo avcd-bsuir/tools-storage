@@ -5,7 +5,7 @@
  * Stack, based on linked list.
  *
  * Written by AlexeyFilich
- * 22 mar 2021
+ * 23 mar 2021
  */
 
 #ifndef STACK_H
@@ -13,7 +13,6 @@
 
 struct Stack {
     void * data;
-    size_t element_size;
     struct Stack * parent;
 };
 typedef struct Stack Stack;
@@ -40,6 +39,7 @@ void aStackPop(Stack ** stack) {
         exit(-1);
     }
     *stack = (*stack)->parent;
+    free(prev->data);
     free(prev);
 }
 
