@@ -143,8 +143,8 @@ void aListDelete(List ** list) {
     *list = next;
 }
 
-#define aListDataAs(queue, type) \
-    *(type *)aListData(queue)
+#define aListDataAs(list, type) \
+    *(type *)aListData(list)
 
 void * aListData(List ** list) {
     if (!list || !*list) RETURN;
