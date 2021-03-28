@@ -18,6 +18,7 @@ struct Queue {
 typedef struct Queue Queue;
 
 void aQueueInit(Queue ** queue) {
+    if (!queue) RETURN;
     *queue = NULL;
 }
 
@@ -25,28 +26,30 @@ void aQueueInit(Queue ** queue) {
     aQueuePushType(queue, data, sizeof(*(data)))
 
 void aQueuePushType(Queue ** queue, void * data, size_t element_size) {
+    if (!queue) RETURN;
     if (*queue) {
         Queue * last = *queue;
         while (last->next)
             last = last->next;
         last->next = (Queue *)malloc(sizeof(Queue));
+        if (!last->next) RETURN;
         last->next->data = malloc(element_size);
+        if (!last->next->data) RETURN;
         memcpy(last->next->data, data, element_size);
         last->next->next = NULL;
     } else {
         *queue = (Queue *)malloc(sizeof(Queue));
+        if (!*queue) RETURN;
         (*queue)->data = malloc(element_size);
+        if (!(*queue)->data) RETURN;
         memcpy((*queue)->data, data, element_size);
         (*queue)->next = NULL;
     }
 }
 
 void aQueuePop(Queue ** queue) {
+    if (!queue || !*queue) RETURN;
     Queue * prev = *queue;
-    if (*queue == NULL) {
-        printf("error: queue is empty\n");
-        exit(-1);
-    }
     *queue = (*queue)->next;
     free(prev->data);
     free(prev);
@@ -56,10 +59,7 @@ void aQueuePop(Queue ** queue) {
     *(type *)aQueueFirst(queue)
 
 void * aQueueFirst(Queue ** queue) {
-    if (*queue == NULL) {
-        printf("error: queue is empty\n");
-        exit(-1);
-    }
+    if (!queue || !*queue) RETURN;
     return (*queue)->data;
 }
 

@@ -25,19 +25,19 @@ void aStackInit(Stack ** stack) {
     aStackPushType(stack, data, sizeof(*(data)))
 
 void aStackPushType(Stack ** stack, void * data, size_t element_size) {
+    if (!stack) RETURN;
     Stack * next = (Stack *)malloc(sizeof(Stack));
+    if (!next) RETURN;
     next->data = malloc(element_size);
+    if (!next->data) RETURN;
     memcpy(next->data, data, element_size);
     next->parent = *stack;
     *stack = next;
 }
 
 void aStackPop(Stack ** stack) {
+    if (!stack || !*stack) RETURN;
     Stack * prev = *stack;
-    if (*stack == NULL) {
-        printf("error: stack is empty\n");
-        exit(-1);
-    }
     *stack = (*stack)->parent;
     free(prev->data);
     free(prev);
@@ -47,10 +47,7 @@ void aStackPop(Stack ** stack) {
     *(type *)aStackTop(stack)
 
 void * aStackTop(Stack ** stack) {
-    if (*stack == NULL) {
-        printf("error: stack is empty\n");
-        exit(-1);
-    }
+    if (!stack || !*stack) RETURN;
     return (*stack)->data;
 }
 

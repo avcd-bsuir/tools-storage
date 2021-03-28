@@ -23,14 +23,17 @@
 #endif
 
 #ifdef STORAGE_EXIT_ON_FAILURE
+    #define RETURN exit(1)
     #define RETURN_1 exit(1)
     #define RETURN_NULL exit(1)
 #else
+    #define RETURN return
     #define RETURN_1 return 1
     #define RETURN_NULL return NULL
 #endif
 
 #include "Array.h"
+#include "List.h"
 #include "Queue.h"
 #include "Stack.h"
 
